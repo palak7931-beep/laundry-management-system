@@ -9,7 +9,7 @@ function Student() {
 
 useEffect(() => {
 
-  fetch("https://laundry-management-system-s5d3.onrender.com/getRecords")
+  fetch("https://laundry-management-system-s5d3.onrender.com/records")
     .then((res) => res.json())
     .then((data) => {
       setEntries(data)
