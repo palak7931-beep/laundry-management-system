@@ -43,7 +43,7 @@ const [editIndex, setEditIndex] = useState(null)
 const [searchTerm, setSearchTerm] = useState("")
 const fetchRecords = () => {
 
-  fetch("http://localhost:5000/records")
+  fetch("https://laundry-management-system-s5d3.onrender.com/records")
 
     .then((response) => response.json())
 
@@ -85,7 +85,7 @@ const handleEdit = (index) => {
 
 const handleDelete = async (id) => {
 
-    await fetch(`http://localhost:5000/deleteRecord/${id}`, {
+    await fetch(`https://laundry-management-system-s5d3.onrender.com/deleteRecord/${id}`, {
         method: "DELETE"
     })
 
@@ -106,7 +106,7 @@ const handleStatusChange = async (index, newStatus) => {
     setEntries(updatedEntries)
 
     await fetch(
-        `http://localhost:5000/updateStatus/${entries[index]._id}`,
+        `https://laundry-management-system-s5d3.onrender.com/updateStatus/${entries[index]._id}`,
         {
             method: "PUT",
             headers: {
@@ -151,7 +151,7 @@ if (duplicateEntry) {
     Number(depositAmount) - Number(deductedAmount),
   }
 
-  fetch("http://localhost:5000/addRecord", {
+  fetch("https://laundry-management-system-s5d3.onrender.com/addRecord", {
 
   method: "POST",
 
@@ -175,7 +175,7 @@ if (duplicateEntry) {
 if (editIndex !== null) {
 
     await fetch(
-        `http://localhost:5000/updateRecord/${entries[editIndex]._id}`,
+        `https://laundry-management-system-s5d3.onrender.com/updateRecord/${entries[editIndex]._id}`,
         {
             method: "PUT",
             headers: {
