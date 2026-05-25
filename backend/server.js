@@ -14,9 +14,6 @@ app.use(cors())
 app.use(express.json())
 
 
-
-const PORT = process.env.PORT || 5000
-
 mongoose.connect(process.env.MONGO_URI)
 
 .then(() => {
@@ -85,4 +82,9 @@ app.put("/updateStatus/:id", async (req, res) => {
         message: "Status updated successfully"
     })
 
+})
+const PORT = process.env.PORT || 5000
+
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`)
 })
