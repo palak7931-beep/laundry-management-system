@@ -7,20 +7,23 @@ function Student() {
 
   const [entries, setEntries] = useState([])
 
-  useEffect(() => {
+useEffect(() => {
 
-    const savedEntries = localStorage.getItem("laundryEntries")
+  fetch("https://laundry-management-system-s5d3.onrender.com/getRecords")
+    .then((res) => res.json())
+    .then((data) => {
+      setEntries(data)
+    })
+    .catch((error) => {
+      console.log(error)
+    })
 
-    if (savedEntries) {
-      setEntries(JSON.parse(savedEntries))
-    }
-
-  }, [])
+}, [])
 
   const studentRecords = entries.filter(
   (entry) =>
 
-    entry.roomNumber
+    entry.roomNumber.toString()
       .toLowerCase()
       .includes(studentRoomSearch.toLowerCase())
 )
