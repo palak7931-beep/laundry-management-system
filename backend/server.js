@@ -1,3 +1,4 @@
+require("dotenv").config({ path: "./.env" })
 const mongoose = require("mongoose")
 
 const Laundry = require("./models/Laundry")
@@ -14,9 +15,9 @@ app.use(express.json())
 
 
 
-const PORT = 5000
+const PORT = process.env.PORT || 5000
 
-mongoose.connect("mongodb://palak7931_db_user:Palak1234@ac-rsig0zm-shard-00-00.urmqmzz.mongodb.net:27017,ac-rsig0zm-shard-00-01.urmqmzz.mongodb.net:27017,ac-rsig0zm-shard-00-02.urmqmzz.mongodb.net:27017/?ssl=true&replicaSet=atlas-kkldya-shard-0&authSource=admin&appName=LaundryCluster")
+mongoose.connect(process.env.MONGO_URI)
 
 .then(() => {
 
@@ -84,8 +85,4 @@ app.put("/updateStatus/:id", async (req, res) => {
         message: "Status updated successfully"
     })
 
-})
-
-app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
 })
